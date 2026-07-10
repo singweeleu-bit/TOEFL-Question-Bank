@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TOEFL 题库公开版</title>
+    <link rel="stylesheet" href="./readonly.css" />
+  </head>
+  <body>
+    <div class="readonly-shell">
+      <header class="readonly-header">
+        <div>
+          <p class="eyebrow">TOEFL 题库</p>
+          <h1>公开只读版</h1>
+          <p id="publishMeta">正在读取发布时间...</p>
+        </div>
+        <div class="header-stats" id="headerStats"></div>
+      </header>
+
+      <section class="toolbar" aria-label="题库筛选">
+        <label>
+          <span>搜索</span>
+          <input id="searchInput" type="search" placeholder="题干 / 材料 / 标题 / 编号" />
+        </label>
+        <label>
+          <span>科目</span>
+          <select id="sectionFilter"></select>
+        </label>
+        <label>
+          <span>题型</span>
+          <select id="typeFilter"></select>
+        </label>
+        <label>
+          <span>套题</span>
+          <select id="setFilter"></select>
+        </label>
+      </section>
+
+      <main class="readonly-grid">
+        <aside class="result-list" id="resultList"></aside>
+        <article class="detail-panel" id="detailPanel"></article>
+      </main>
+    </div>
+
+    <script src="./readonly.js" type="module"></script>
+  </body>
+</html>

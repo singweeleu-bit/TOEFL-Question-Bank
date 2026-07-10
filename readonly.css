@@ -1,0 +1,257 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f8f6;
+  --paper: #ffffff;
+  --ink: #1f2926;
+  --muted: #66736f;
+  --teal: #0f7f73;
+  --teal-soft: #e4f3f0;
+  --coral-soft: #fae9e3;
+  --line: #d8e2de;
+  --shadow: 0 16px 42px rgba(20, 43, 38, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    Inter,
+    "Microsoft YaHei",
+    "PingFang SC",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.readonly-shell {
+  width: min(1480px, calc(100vw - 40px));
+  margin: 0 auto;
+  padding: 28px 0 34px;
+}
+
+.readonly-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-end;
+  padding: 26px 0 22px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--teal);
+  font-weight: 800;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1.05;
+}
+
+.readonly-header p:last-child {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+.header-stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.stat-pill,
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--teal-soft);
+  color: #16584f;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pill.type {
+  background: var(--coral-soft);
+  color: #9b4935;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, minmax(170px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+
+.readonly-grid {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.42fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.result-list,
+.detail-panel {
+  min-height: 640px;
+  max-height: calc(100vh - 210px);
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.result-row {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 16px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.result-row:hover,
+.result-row.active {
+  background: #f0faf7;
+}
+
+.result-row.active {
+  box-shadow: inset 3px 0 0 var(--teal);
+}
+
+.result-row strong {
+  font-size: 17px;
+}
+
+.result-row p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.row-tags,
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.detail-panel {
+  padding: 24px;
+}
+
+.detail-panel h2 {
+  margin: 0 0 10px;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.detail-section {
+  margin-top: 22px;
+}
+
+.detail-section h3 {
+  margin: 0 0 10px;
+  color: #16584f;
+  font-size: 15px;
+}
+
+.text-box,
+.option-row {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: #fbfdfc;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.option-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.option-key {
+  flex: 0 0 auto;
+  min-width: 30px;
+  border-radius: 6px;
+  background: var(--teal-soft);
+  color: #16584f;
+  text-align: center;
+  font-weight: 800;
+}
+
+.answer-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.empty {
+  padding: 32px;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .readonly-shell {
+    width: min(100vw - 20px, 720px);
+    padding-top: 12px;
+  }
+
+  .readonly-header,
+  .header-stats {
+    display: grid;
+    justify-content: stretch;
+  }
+
+  .toolbar,
+  .readonly-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-list,
+  .detail-panel {
+    max-height: none;
+    min-height: 0;
+  }
+}
