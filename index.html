@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TOEFL 题库公开版</title>
-    <link rel="stylesheet" href="./readonly.css" />
+    <title>TOEFL 题库公开只读版</title>
+    <link rel="stylesheet" href="./readonly.css?v=20260713-usage-signals" />
   </head>
   <body>
     <div class="readonly-shell">
@@ -16,6 +16,12 @@
         </div>
         <div class="header-stats" id="headerStats"></div>
       </header>
+
+      <nav class="view-tabs" id="viewTabs" aria-label="公开版功能入口">
+        <button class="active" type="button" data-view="browse">题库浏览</button>
+        <button type="button" data-view="duplicates">复用规律快照</button>
+        <button type="button" data-view="checker">截图/文本查重</button>
+      </nav>
 
       <section class="toolbar" aria-label="题库筛选">
         <label>
@@ -40,8 +46,76 @@
         <aside class="result-list" id="resultList"></aside>
         <article class="detail-panel" id="detailPanel"></article>
       </main>
+
+      <main class="duplicate-panel" id="duplicatePanel" hidden>
+        <section class="snapshot-hero">
+          <div>
+            <p class="eyebrow">Usage Pattern Snapshot</p>
+            <h2>复用规律快照</h2>
+            <p>
+              基于当前公开只读题库在浏览器本地计算材料和题目复用情况。这里的“重复”不是坏事，
+              而是重要材料、常考话题和出题规律的信号，可用于统计、筛选和导出。
+            </p>
+          </div>
+          <button class="export-btn" id="exportDuplicates" type="button">导出当前筛选</button>
+        </section>
+
+        <section class="snapshot-filters" aria-label="复用规律筛选">
+          <label>
+            <span>科目</span>
+            <select id="duplicateSectionFilter"></select>
+          </label>
+          <label>
+            <span>题型</span>
+            <select id="duplicateTypeFilter"></select>
+          </label>
+          <label>
+            <span>频率</span>
+            <select id="duplicateLevelFilter">
+              <option value="all">全部频率</option>
+              <option value="high">高频信号</option>
+              <option value="medium">中频复用</option>
+              <option value="low">低频复用</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="snapshot-summary" id="duplicateSummary"></section>
+        <section class="duplicate-list" id="duplicateList"></section>
+      </main>
+
+      <main class="checker-panel" id="checkerPanel" hidden>
+        <section class="snapshot-hero">
+          <div>
+            <p class="eyebrow">Quick Match</p>
+            <h2>截图/文本查重</h2>
+            <p>
+              粘贴题干、材料或截图中识别出的文字，即可在公开只读题库中查找相似内容。
+              截图入口会先保留图片预览；如需自动 OCR，后续可接入识别服务。
+            </p>
+          </div>
+        </section>
+
+        <section class="checker-grid">
+          <div class="checker-input-card">
+            <label>
+              <span>上传截图（可选）</span>
+              <input id="screenshotInput" type="file" accept="image/*" />
+            </label>
+            <div class="screenshot-preview" id="screenshotPreview">截图预览区</div>
+            <label>
+              <span>粘贴文本</span>
+              <textarea id="quickCheckText" rows="10" placeholder="把题干、阅读材料、听力文本或截图识别出的文字粘贴到这里"></textarea>
+            </label>
+            <button class="export-btn" id="runQuickCheck" type="button">查找相似内容</button>
+          </div>
+          <div class="checker-results" id="quickCheckResults">
+            <div class="empty">输入文本后，会显示最相似的题目和材料复用信号。</div>
+          </div>
+        </section>
+      </main>
     </div>
 
-    <script src="./readonly.js" type="module"></script>
+    <script src="./readonly.js?v=20260716-official-scope" type="module"></script>
   </body>
 </html>
